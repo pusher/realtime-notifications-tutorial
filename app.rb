@@ -1,3 +1,4 @@
+require 'sinatra'
 require 'pusher'
 
 pusher = Pusher::Client.new({
@@ -6,6 +7,13 @@ pusher = Pusher::Client.new({
 	secret: ENV["PUSHER_APP_SECRET"]
 })
 
-pusher.trigger('my_channel', 'my_event', {
-	message: 'hello world'	
-})
+get '/' do
+	erb :index
+end
+
+get '/notification' do
+	pusher.trigger('notifications', 'new_notification', {
+		message: 'hello world'	
+	})
+	"Notification triggered!"
+end

@@ -1,1 +1,2 @@
 gem 'pusher'
+gem 'sinatra'
