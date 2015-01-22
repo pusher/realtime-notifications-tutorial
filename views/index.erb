@@ -10,6 +10,10 @@
 </head>
 <body>
 
+	<input class="create-notification" placeholder="Send a notification :)"></input>
+
+	<button class="submit-notification">Go!</button>
+
 	<div class="notification">
 	</div>
 	
@@ -23,6 +27,15 @@
 		var message = notification.message;
 		$('div.notification').text(message);
 	});
+
+	var sendNotification = function(){
+		var text = $('input.create-notification').val();
+		$.post('/notification', {message: text}).success(function(){
+			console.log('Notification sent!');
+		});
+	};
+
+	$('button.submit-notification').on('click', sendNotification);
 
 	</script>
 

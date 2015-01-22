@@ -11,9 +11,9 @@ get '/' do
 	erb :index
 end
 
-get '/notification' do
+post '/notification' do
+	message = params[:message]
 	pusher.trigger('notifications', 'new_notification', {
-		message: 'hello world'	
+		message: message
 	})
-	"Notification triggered!"
 end
