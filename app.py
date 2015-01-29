@@ -1,5 +1,6 @@
 import pusher
 import os
+import cgi
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -20,7 +21,7 @@ def show_index():
 
 @app.route("/notification", methods=['POST'])
 def trigger_notification():
-	message =  request.form['message']
+	message =  cgi.escape(request.form['message'])
 	p['notifications'].trigger('new_notification', {'message': message})
 	return "Notification triggered!"
 
