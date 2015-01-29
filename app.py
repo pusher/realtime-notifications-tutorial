@@ -1,6 +1,6 @@
 import pusher
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -18,9 +18,10 @@ p = pusher.Pusher(
 def show_index():
     return render_template('index.html')
 
-@app.route("/notification")
+@app.route("/notification", methods=['POST'])
 def trigger_notification():
-	p['notifications'].trigger('new_notification', {'message': 'hello world'})
+	message =  request.form['message']
+	p['notifications'].trigger('new_notification', {'message': message})
 	return "Notification triggered!"
 
 if __name__ == "__main__":
