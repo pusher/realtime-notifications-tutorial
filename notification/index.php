@@ -8,7 +8,7 @@ $app_secret = getenv('PUSHER_APP_SECRET');
 
 $pusher = new Pusher($app_key, $app_secret, $app_id);
 
-$text = $_POST['message'];
+$text = htmlspecialchars($_POST['message']);
 
 $data['message'] = $text;
 $pusher->trigger('notifications', 'new_notification', $data);
