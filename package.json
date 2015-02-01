@@ -1,0 +1,22 @@
+{
+  "name": "notifications_tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "notification.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jpatel531/notifications_tutorial.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpatel531/notifications_tutorial/issues"
+  },
+  "homepage": "https://github.com/jpatel531/notifications_tutorial",
+  "dependencies": {
+    "pusher": "^1.0.3"
+  }
+}
