@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var Pusher = require('pusher');
+var escapeHTML = require('escape-html');
 
 var app_id = process.env.PUSHER_APP_ID;
 var app_key = process.env.PUSHER_APP_KEY;
@@ -14,7 +15,7 @@ var pusher = new Pusher({
 });
 
 router.post('/', function(req, res){
-	var message = req.param('message');
+	var message = escapeHTML(req.param('message'));
 	pusher.trigger('notifications', 'new_notification', {
 		message: message
 	});
