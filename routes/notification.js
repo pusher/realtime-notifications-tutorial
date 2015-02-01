@@ -13,9 +13,10 @@ var pusher = new Pusher({
 	secret: app_secret
 });
 
-router.get('/', function(req, res){
+router.post('/', function(req, res){
+	var message = req.param('message');
 	pusher.trigger('notifications', 'new_notification', {
-		message: "hello world"
+		message: message
 	});
 	res.send("Notification triggered!")
 });
